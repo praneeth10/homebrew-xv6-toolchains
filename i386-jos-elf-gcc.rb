@@ -27,6 +27,9 @@ class I386JosElfGcc < Formula
     mkdir 'build' do
       system '../configure', '--disable-nls', '--target=i386-jos-elf', '--disable-werror',
                              "--prefix=#{prefix}",
+                             "--with-gmp=#{Formula["gmp@4"].opt_prefix}",
+                             "--with-mpfr=#{Formula["mpfr@2"].opt_prefix}",
+                             "--with-mpc=#{Formula["libmpc@0.8"].opt_prefix}",
                              "--enable-languages=c",
                              "--without-headers"
       system 'make all-gcc'
