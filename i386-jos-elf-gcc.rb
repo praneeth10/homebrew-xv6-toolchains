@@ -6,9 +6,9 @@ class I386JosElfGcc < Formula
   mirror 'http://ftp.gnu.org/gnu/gcc/gcc-4.8.0/gcc-4.8.0.tar.bz2'
   sha256 'be10769d38c83d09387e55ae8b3f036973e420a76a234f381ba7684b7cd3a22e'
 
-  depends_on 'gmp'
-  depends_on 'libmpc'
-  depends_on 'mpfr'
+  depends_on 'gmp@4'
+  depends_on 'libmpc@0.8'
+  depends_on 'mpfr@2'
   depends_on 'i386-jos-elf-binutils'
 
   def install
