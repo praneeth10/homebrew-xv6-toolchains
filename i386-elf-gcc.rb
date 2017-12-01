@@ -2,11 +2,14 @@ require 'formula'
 
 class I386ElfGcc < Formula
   homepage 'http://gcc.gnu.org'
-  url 'http://ftpmirror.gnu.org/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2'
-  mirror 'http://ftp.gnu.org/gnu/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2'
-  sha256 '1934f3f68fe477299fe929e527c62d800f8b1b01ca74cc218f90459715ace296'
-  revision 1
-
+  #url 'http://ftpmirror.gnu.org/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2'
+  #mirror 'http://ftp.gnu.org/gnu/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2'
+  #sha256 '1934f3f68fe477299fe929e527c62d800f8b1b01ca74cc218f90459715ace296'
+  #revision 1
+  url "https://ftp.gnu.org/gnu/gcc/gcc-4.9.4/gcc-4.9.4.tar.bz2"
+  mirror "https://ftpmirror.gnu.org/gcc/gcc-4.9.4/gcc-4.9.4.tar.bz2"
+  sha256 "6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092"
+  
   depends_on 'gmp@4'
   depends_on 'libmpc@0.8'
   depends_on 'mpfr@2'
@@ -26,9 +29,9 @@ class I386ElfGcc < Formula
                              "--prefix=#{prefix}",
                              "--enable-languages=c",
                              "--without-headers",
-                             "--with-gmp=#{Formula["gmp"].opt_prefix}",
-                             "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                             "--with-mpc=#{Formula["libmpc"].opt_prefix}"
+                             "--with-gmp=#{Formula["gmp@4"].opt_prefix}",
+                             "--with-mpfr=#{Formula["mpfr@2"].opt_prefix}",
+                             "--with-mpc=#{Formula["libmpc@0.8"].opt_prefix}"
       system 'make all-gcc'
       system 'make install-gcc'
       FileUtils.ln_sf binutils.prefix/"i386-elf", prefix/"i386-elf"
