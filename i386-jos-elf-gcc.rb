@@ -4,7 +4,7 @@ class I386JosElfGcc < Formula
   homepage 'http://gcc.gnu.org'
   url 'http://ftpmirror.gnu.org/gcc/gcc-4.8.0/gcc-4.8.0.tar.bz2'
   mirror 'http://ftp.gnu.org/gnu/gcc/gcc-4.8.0/gcc-4.8.0.tar.bz2'
-  sha256 'be10769d38c83d09387e55ae8b3f036973e420a76a234f381ba7684b7cd3a22e'
+  sha256 'b037fe5132b71ecad2ea7141ec92292b5d32427bf90fd90cde432b1d5abacc2c'
   
   depends_on 'gcc@4.9'
   depends_on 'gmp@4'
