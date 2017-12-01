@@ -2,12 +2,9 @@ require 'formula'
 
 class I386JosElfGcc < Formula
   homepage 'http://gcc.gnu.org'
-  #url 'http://ftpmirror.gnu.org/gcc/gcc-4.8.0/gcc-4.8.0.tar.bz2'
-  #mirror 'http://ftp.gnu.org/gnu/gcc/gcc-4.8.0/gcc-4.8.0.tar.bz2'
-  #sha256 'be10769d38c83d09387e55ae8b3f036973e420a76a234f381ba7684b7cd3a22e'
-  url "https://ftp.gnu.org/gnu/gcc/gcc-4.9.4/gcc-4.9.4.tar.bz2"
-  mirror "https://ftpmirror.gnu.org/gcc/gcc-4.9.4/gcc-4.9.4.tar.bz2"
-  sha256 "6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092"
+  url 'http://ftpmirror.gnu.org/gcc/gcc-4.8.0/gcc-4.8.0.tar.bz2'
+  mirror 'http://ftp.gnu.org/gnu/gcc/gcc-4.8.0/gcc-4.8.0.tar.bz2'
+  sha256 'be10769d38c83d09387e55ae8b3f036973e420a76a234f381ba7684b7cd3a22e'
   
   depends_on 'gcc@4.9'
   depends_on 'gmp@4'
