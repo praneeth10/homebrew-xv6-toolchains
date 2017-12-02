@@ -1,6 +1,6 @@
 # homebrew-xv6-toolchains
 
-This is a brew repo for installing toolchains to run xv6 on macOS.
+This is a brew repo for installing toolchains to run xv6 on macOS 10.13 High Sierra.
 
 ## Install
 
