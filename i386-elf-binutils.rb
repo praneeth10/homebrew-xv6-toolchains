@@ -23,5 +23,4 @@ class I386ElfBinutils < Formula
       FileUtils.mv lib, libexec
     end
   end
-
 end
