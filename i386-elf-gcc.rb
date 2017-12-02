@@ -9,45 +9,20 @@ class I386ElfGcc < Formula
   depends_on 'gmp@4'
   depends_on 'libmpc@0.8'
   depends_on 'mpfr@2'
+  depends_on 'gcc@4.9'
   depends_on 'i386-elf-binutils'
 
-  # The bottles are built on systems with the CLT installed, and do not work
-  # out of the box on Xcode-only systems due to an incorrect sysroot.
-  def pour_bottle?
-    MacOS::CLT.installed?
-  end
-
-  # Fix build with Xcode 9
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=82091
-  if DevelopmentTools.clang_build_version >= 900
-    patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/c2dae73416/gcc%404.9/xcode9.patch"
-      sha256 "92c13867afe18ccb813526c3b3c19d95a2dd00973f9939cf56ab7698bdd38108"
-    end
-  end
-
-  # Fix issues with macOS 10.13 headers and parallel build on APFS
-  if MacOS.version >= :high_sierra
-    patch do
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/19d56dcb8c/gcc%404.9/high_sierra.patch"
-      sha256 "360ba78af8b13cda0503eef2c809b98404613a7cda9798e53c8b65a9b61b37b5"
-    end
-  end
-
   def install
+    ENV['CC'] = '/usr/local/bin/gcc-4.9'
+    ENV['CXX'] = '/usr/local/bin/g++-4.9'
+    ENV['CPP'] = '/usr/local/bin/cpp-4.9'
+    ENV['LD'] = '/usr/local/bin/gcc-4.9'
+
     binutils = Formulary.factory 'i386-elf-binutils'
     ENV['PATH'] += ':#{binutils.prefix/"bin"}'
 
     args = [
-      '--disable-nls', 
-      '--target=i386-elf', 
-      '--disable-werror',
-      "--prefix=#{prefix}",
-      '--enable-languages=c',
-      '--without-headers',
-      "--with-gmp=#{Formula["gmp@4"].opt_prefix}",
-      "--with-mpfr=#{Formula["mpfr@2"].opt_prefix}",
-      "--with-mpc=#{Formula["libmpc@0.8"].opt_prefix}",
+      
     ]
 
     mkdir 'build' do
@@ -58,7 +33,16 @@ class I386ElfGcc < Formula
         args << "--with-sysroot=#{MacOS.sdk_path}"
       end
       
-      system '../configure', *args
+      system '../configure', '--disable-nls', 
+                             '--target=i386-elf', 
+                             '--disable-werror',
+                             "--prefix=#{prefix}",
+                             '--enable-languages=c',
+                             '--without-headers',
+                             "--with-gmp=#{Formula["gmp@4"].opt_prefix}",
+                             "--with-mpfr=#{Formula["mpfr@2"].opt_prefix}",
+                             "--with-mpc=#{Formula["libmpc@0.8"].opt_prefix}"
+
       system 'make all-gcc'
       system 'make install-gcc'
       FileUtils.ln_sf binutils.prefix/'i386-elf', prefix/'i386-elf"'
