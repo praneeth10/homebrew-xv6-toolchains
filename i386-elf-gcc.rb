@@ -12,7 +12,7 @@ class I386ElfGcc < Formula
   depends_on 'i386-elf-binutils'
 
   def install
-    binutils = Formula.factory 'i386-elf-binutils'
+    binutils = Formulary.factory 'i386-elf-binutils'
     ENV['PATH'] += ':#{binutils.prefix/"bin"}'
 
     mkdir 'build' do
