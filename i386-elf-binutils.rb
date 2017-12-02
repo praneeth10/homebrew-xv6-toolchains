@@ -9,7 +9,6 @@ class I386ElfBinutils < Formula
     mkdir 'build' do
       system '../configure', '--disable-nls', '--target=i386-elf',
                              '--disable-werror',
-                             #'--enable-gold=yes',
                              "--prefix=#{prefix}"
       system 'make all'
       system 'make install'
