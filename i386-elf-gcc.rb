@@ -35,24 +35,30 @@ class I386ElfGcc < Formula
   end
 
   def install
-    binutils = Formulary.factory('i386-elf-binutils')
+    binutils = Formulary.factory 'i386-elf-binutils'
     ENV['PATH'] += ':#{binutils.prefix/"bin"}'
+
+    args = [
+      '--disable-nls', 
+      '--target=i386-elf', 
+      '--disable-werror',
+      "--prefix=#{prefix}",
+      '--enable-languages=c',
+      '--without-headers',
+      "--with-gmp=#{Formula["gmp@4"].opt_prefix}",
+      "--with-mpfr=#{Formula["mpfr@2"].opt_prefix}",
+      "--with-mpc=#{Formula["libmpc@0.8"].opt_prefix}",
+    ]
 
     mkdir 'build' do
       unless MacOS::CLT.installed?
         # For Xcode-only systems, we need to tell the sysroot path.
         # "native-system-headers" will be appended
-        args << "--with-native-system-header-dir=/usr/include"
+        args << "--with-native-system-header-dir=/usr/include",
         args << "--with-sysroot=#{MacOS.sdk_path}"
       end
       
-      system '../configure', '--disable-nls', '--target=i386-elf', '--disable-werror',
-                             "--prefix=#{prefix}",
-                             '--enable-languages=c',
-                             '--without-headers',
-                             "--with-gmp=#{Formula["gmp@4"].opt_prefix}",
-                             "--with-mpfr=#{Formula["mpfr@2"].opt_prefix}",
-                             "--with-mpc=#{Formula["libmpc@0.8"].opt_prefix}"
+      system '../configure', *args
       system 'make all-gcc'
       system 'make install-gcc'
       FileUtils.ln_sf binutils.prefix/'i386-elf', prefix/'i386-elf"'
