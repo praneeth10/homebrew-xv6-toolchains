@@ -10,7 +10,7 @@ class I386ElfBinutils < Formula
       system '../configure', '--disable-nls', '--target=i386-elf',
                              '--disable-werror',
                              #'--enable-gold=yes',
-                             '--prefix=#{prefix}'
+                             "--prefix=#{prefix}"
       system 'make all'
       system 'make install'
       FileUtils.mv lib, libexec
