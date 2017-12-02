@@ -54,7 +54,7 @@ class I386ElfGcc < Formula
       unless MacOS::CLT.installed?
         # For Xcode-only systems, we need to tell the sysroot path.
         # "native-system-headers" will be appended
-        args << "--with-native-system-header-dir=/usr/include",
+        args << "--with-native-system-header-dir=/usr/include"
         args << "--with-sysroot=#{MacOS.sdk_path}"
       end
       
