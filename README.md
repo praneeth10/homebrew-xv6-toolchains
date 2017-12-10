@@ -7,6 +7,7 @@ This is a brew repo for installing toolchains to run xv6 on macOS 10.13 High Sie
 ```sh
 brew tap coverxit/homebrew-xv6-toolchains
 brew install i386-elf-gcc
+brew install qemu
 ```
 
 You then may have to modify `Makefile` in xv6, by first setting the `TOOLPREFIX`:
