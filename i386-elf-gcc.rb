@@ -25,9 +25,9 @@ class I386ElfGcc < Formula
                              "--prefix=#{prefix}",
                              "--enable-languages=c",
                              "--without-headers",
-                             "--with-gmp=#{Formula["gmp@4"].opt_prefix}",
-                             "--with-mpfr=#{Formula["mpfr@2"].opt_prefix}",
-                             "--with-mpc=#{Formula["libmpc@0.8"].opt_prefix}"
+                             "--with-gmp=#{Formula["gmp"].opt_prefix}",
+                             "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
+                             "--with-mpc=#{Formula["libmpc"].opt_prefix}"
       system 'make all-gcc'
       system 'make install-gcc'
       FileUtils.ln_sf binutils.prefix/"i386-elf", prefix/"i386-elf"
