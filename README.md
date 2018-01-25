@@ -10,9 +10,9 @@ brew install i386-elf-gcc
 brew install qemu
 ```
 Move to the directory where you wish to install the xv6 OS and run
-'''
+```
 git clone https://github.com/mit-pdos/xv6-public
-'''
+```
 Now replace the Makefile in the xv6 directory with the one in this repo.
 
 The given Makefile essentially has the following changes to the default one
@@ -26,12 +26,13 @@ to
 CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -march=i686 -Werror -fno-omit-frame-pointer
 ```
 Now run 
-'''
+```
+cd xv6-public
 make
-'''
+```
 and enjoy!
 
 To use it with QEMU emulator, run
-'''
+```
 make qemu
-'''
+```
