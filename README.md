@@ -30,9 +30,14 @@ Now run
 cd xv6-public
 make
 ```
-and enjoy!
+xv6 is installed.
 
-To use it with QEMU emulator, run
+COL331 students might want to execute the following too
+```
+echo "export PATH=/usr/local/Cellar/i386-elf-gcc/:\$PATH" >> ~/.bash_profile
+```
+
+To use xv6 with QEMU emulator, run
 ```
 make qemu
 ```
