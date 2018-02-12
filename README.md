@@ -5,7 +5,7 @@ This is a brew repo for installing toolchains to run xv6 on macOS 10.13 High Sie
 ## Install
 
 ```sh
-brew tap krunal-shah/homebrew-xv6-toolchains
+brew tap praneeth10/homebrew-xv6-toolchains
 brew install i386-elf-gcc
 brew install qemu
 ```
