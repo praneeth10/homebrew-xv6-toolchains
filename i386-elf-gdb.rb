@@ -1,7 +1,7 @@
 require 'formula'
 
 class I386ElfGdb < Formula
-  url 'http://mirrors.kernel.org/sourceware/gdb/releases/gdb-8.1.tar.gz'
+  url 'https://mirrors.peers.community/mirrors/gnu/gdb/gdb-8.1.tar.gz'
 
   depends_on 'i386-elf-gcc'
 
